@@ -26,7 +26,7 @@ import com.test.ioc.annotation.Service;
 import com.test.ioc.controller.UserController;
 
 /**
- *手工实现简易springmvc框架 
+ *模拟springmvc框架的ioc流程 
  *
  */
 public class DispatcherServlet extends HttpServlet {
@@ -77,7 +77,6 @@ public class DispatcherServlet extends HttpServlet {
         for (String className : packageNames) {  
             Class<?> cName = Class.forName(className.replace(".class", "").trim());
             //bean 实例化之前获取增强方法
-            aop();
             if (cName.isAnnotationPresent(Controller.class)) {  
                 Object instance = cName.newInstance();  
                 Controller controller = (Controller) cName.getAnnotation(Controller.class);  
@@ -177,11 +176,6 @@ public class DispatcherServlet extends HttpServlet {
         }
     }  
     
-    private void aop() {
-    	//不会
-    	
-	}
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
