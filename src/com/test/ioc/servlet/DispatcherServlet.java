@@ -79,6 +79,7 @@ public class DispatcherServlet extends HttpServlet {
             //bean 实例化之前获取增强方法
             if (cName.isAnnotationPresent(Controller.class)) {  
                 Object instance = cName.newInstance();  
+                //将cName类转为注解类
                 Controller controller = (Controller) cName.getAnnotation(Controller.class);  
                 String key = controller.value(); 
                 //如果@Controller(value="")的话,value默认设置为userController的形式
